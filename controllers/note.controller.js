@@ -11,7 +11,7 @@ const createNote = async (req, res) => {
       });
     }
 
-    const note = new Note({text, userId: user._id});
+    const note = new Note({text, userId: user._id, createdDate: Date.now(),});
 
     await note.save();
     await res.json({
@@ -82,6 +82,12 @@ const changeCurrentNote = async (req, res) => {
     const noteId = await req.params.id;
     const note = await Note.findOne({_id: noteId, userId: user._id});
     const newTextValue = req.body.text;
+
+    if (!note) {
+      return await res.status(400).json({
+        message: 'Note with this id not found!',
+      });
+    }
 
     if (!newTextValue) {
       return await res.status(400).json({

@@ -4,6 +4,7 @@ import {AuthContext} from "../context/AuthContext";
 import {Loader} from "../components/Loader";
 import {useNavigate} from "react-router-dom";
 import {useMessage} from "../hooks/message.hook";
+// import {useAuth} from "../hooks/auth.hook";
 
 export const ProfilePage = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export const ProfilePage = () => {
   const {loading, request} = useHttp();
   const {token} = useContext(AuthContext);
   const message = useMessage();
+  // const {ready} = useAuth();
   const [readyToDelete, setReadyToDelete] = useState(false);
 
   useEffect(() => {

@@ -73,6 +73,7 @@ const register = async (req, res) => {
     const user = new User({
       username,
       password: hashedPassword,
+      createdDate: Date.now(),
     });
 
     await user.save();
