@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/oleksiishevchenko93/homework-2-nodejs.git"
+    "url": "git+https://github.com/ShevchenkoOleksii/notes-manager-mern-app.git"
   },
   "keywords": [
     "NodeJS",
