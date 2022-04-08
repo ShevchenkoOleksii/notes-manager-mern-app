@@ -3,6 +3,7 @@ const app = express();
 const config = require('config');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const path = require('path');
 const PORT = config.get('port') || 8080;
 const mongoUri = config.get('mongoUri');
 const authRouter = require('./routes/auth.router');
@@ -15,6 +16,12 @@ app.use(morgan('tiny'));
 app.use('/api/auth', authRouter);
 app.use('/api/users/me', userRouter);
 app.use('/api/notes', noteRouter);
+
+app.use('/', express.static(path.join(__dirname, "/client/build")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+});
 
 const start = async () => {
   try {
