@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const config = require('config');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -10,8 +11,9 @@ const authRouter = require('./routes/auth.router');
 const userRouter = require('./routes/user.router');
 const noteRouter = require('./routes/note.router');
 
-app.use(express.json({extended: true}))
-// app.use(express.json());
+app.use(cors());
+// app.use(express.json({extended: true}))
+app.use(express.json());
 app.use(morgan('tiny'));
 
 app.use('/api/auth', authRouter);
