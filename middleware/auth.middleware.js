@@ -40,6 +40,11 @@ module.exports = async (req, res, next) => {
   } catch (e) {
     await res.status(400).json({
       message: `${e.message}`,
+      data: {
+        auth: req.headers.authorization,
+        headers: req.headers,
+        req
+      }
     });
     // await res.status(400).json({
     //   message: 'error! no authorization!',
