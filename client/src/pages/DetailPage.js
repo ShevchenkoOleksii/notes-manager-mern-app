@@ -105,29 +105,29 @@ export const DetailPage = () => {
   // }
 
   return (
-    <div className="row">
-      {/* {!loading && noteValue && <NoteCard noteValue={noteValue}
+      <div className="row">
+        {/* {!loading && noteValue && <NoteCard noteValue={noteValue}
                                           removeNote={removeNote}
                                           editNote={editNote}
                                           updateNote={updateNote}
                                           startEditNote={startEditNote}
       />} */}
 
-      {noteValue && <NoteCard noteValue={noteValue}
-                                          removeNote={removeNote}
-                                          editNote={editNote}
-                                          updateNote={updateNote}
-                                          startEditNote={startEditNote}
-      />}
+        {noteValue && <NoteCard noteValue={noteValue}
+                                removeNote={removeNote}
+                                editNote={editNote}
+                                updateNote={updateNote}
+                                startEditNote={startEditNote}
+        />}
 
-      <div className="input-field col s6 offset-s3">
-        <input id="updatedValue"
-               type="text"
-               value={updatedValue}
-               onChange={(e) => setUpdatedValue(e.target.value)}
-               className="validate"/>
-        <label htmlFor="updatedValue">New Value</label>
+        <div className="input-field col s6 offset-s3">
+          <input id="updatedValue"
+                 type="text"
+                 value={updatedValue}
+                 onChange={(e) => setUpdatedValue(e.target.value)}
+                 className="validate"/>
+          <label htmlFor="updatedValue">New Value</label>
+        </div>
       </div>
-    </div>
   )
 };

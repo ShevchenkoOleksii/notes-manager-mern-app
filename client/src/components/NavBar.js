@@ -36,25 +36,25 @@ const NavBar = () => {
   }
 
   return (
-    <nav>
-      <div className="nav-wrapper purple darken-1" style={{padding: '0 2rem'}}>
-        <a href="/" onClick={goHome} className="brand-logo">
-          {/*<strong>{userProfile.username}</strong>*/}
-          <i className="large material-icons">person</i>
-        </a>
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li><NavLink to={'/api/users/me'}>Profile</NavLink></li>
-          <li><NavLink to={'/api/notes'}>Notes</NavLink></li>
-          {/*<li><NavLink to={'/api/notes/:id'}>Detail</NavLink></li>*/}
-          <li><a
-            href="/"
-            onClick={logoutHandler}
-          >
-            Log Out
-          </a></li>
-        </ul>
-      </div>
-    </nav>
+      <nav>
+        <div className="nav-wrapper purple darken-1" style={{padding: '0 2rem'}}>
+          <a href="/" onClick={goHome} className="brand-logo">
+            {/*<strong>{userProfile.username}</strong>*/}
+            <i className="large material-icons">person</i>
+          </a>
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <li><NavLink to={'/api/users/me'}>Profile</NavLink></li>
+            <li><NavLink to={'/api/notes'}>Notes</NavLink></li>
+            {/*<li><NavLink to={'/api/notes/:id'}>Detail</NavLink></li>*/}
+            <li><a
+                href="/"
+                onClick={logoutHandler}
+            >
+              Log Out
+            </a></li>
+          </ul>
+        </div>
+      </nav>
   );
 };
 

@@ -8,15 +8,21 @@ module.exports = async (req, res, next) => {
   }
 
   try {
-    const token = req.headers.authorization.split(' ')[1];
-    console.log('token', token)
-    if (!token) {
+    const authorization = req.headers.authorization;
+
+    if (!authorization) {
       return await res.status(400).json({
         message: 'no authorization!',
+        data: {
+          auth: req.headers.authorization,
+          headers: req.headers,
+          req
+        }
       });
     }
 
-    const decoded = await jwt.verify(token, config.get('jwtSecret'));
+    const token = authorization.split(' ')[1];
+    const decoded = await jwt.decode(token, config.get('jwtSecret'));
 
     if (!decoded) {
       return await res.status(400).json({
@@ -42,8 +48,7 @@ module.exports = async (req, res, next) => {
       message: `${e.message}`,
       data: {
         auth: req.headers.authorization,
-        headers: req.headers,
-        req
+        headers: req.headers
       }
     });
     // await res.status(400).json({
