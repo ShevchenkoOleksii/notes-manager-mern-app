@@ -8,15 +8,14 @@ module.exports = async (req, res, next) => {
   }
 
   try {
-    const authorization = req.headers.authorization;
+    const token = req.headers.authorization.split(' ')[1];
 
-    if (!authorization) {
+    if (!token) {
       return await res.status(400).json({
         message: 'no authorization!',
       });
     }
 
-    const token = authorization.split(' ')[1];
     const decoded = await jwt.decode(token, config.get('jwtSecret'));
 
     if (!decoded) {

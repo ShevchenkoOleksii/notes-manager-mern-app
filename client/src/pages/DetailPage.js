@@ -96,13 +96,20 @@ export const DetailPage = () => {
     getNote()
   }, [getNote]);
 
-  if (loading) {
-    return <Loader/>
-  }
+  // if (loading) {
+  //   return <Loader/>
+  // }
 
   return (
     <div className="row">
-      {!loading && noteValue && <NoteCard noteValue={noteValue}
+      {/* {!loading && noteValue && <NoteCard noteValue={noteValue}
+                                          removeNote={removeNote}
+                                          editNote={editNote}
+                                          updateNote={updateNote}
+                                          startEditNote={startEditNote}
+      />} */}
+
+      {noteValue && <NoteCard noteValue={noteValue}
                                           removeNote={removeNote}
                                           editNote={editNote}
                                           updateNote={updateNote}
