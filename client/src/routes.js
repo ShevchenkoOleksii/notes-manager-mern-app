@@ -9,8 +9,8 @@ export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
     return (
       <Routes>
-        <Route path={'/api/notes/'} element={<NotesPage />} />
-        <Route path={'/api/users/me/'} element={<ProfilePage />} />
+        <Route path={'/api/notes'} element={<NotesPage />} />
+        <Route path={'/api/users/me'} element={<ProfilePage />} />
         <Route path={'/api/notes/:id'} element={<DetailPage />} />
         <Route path={'*'} element={<Navigate replace to="/api/users/me" />} />
       </Routes>

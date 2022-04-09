@@ -21,6 +21,7 @@ export const DetailPage = () => {
 
   const getNote = useCallback(async () => {
     try {
+      console.log(token);
       const fetched = await request(`/api/notes/${noteId}`, 'GET', null, {
         Authorization: `Bearer ${token}`
       });
@@ -29,6 +30,10 @@ export const DetailPage = () => {
 
     }
   }, [token, noteId, request]);
+
+  useEffect(() => {
+    getNote()
+  }, [getNote]);
 
   const removeNote = useCallback(async () => {
     try {
@@ -92,9 +97,7 @@ export const DetailPage = () => {
     }
   };
 
-  useEffect(() => {
-    getNote()
-  }, [getNote]);
+
 
   // if (loading) {
   //   return <Loader/>
