@@ -28,9 +28,8 @@ export const ProfilePage = () => {
         Authorization: `Bearer ${token}`,
       });
       setUserProfile(fetched.user);
-      console.log(fetched.user)
     } catch (e) {
-      console.log(e.message)
+      message(e.message);
     }
   }, [token, request]);
 

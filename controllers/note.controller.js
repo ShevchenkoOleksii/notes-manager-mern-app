@@ -1,4 +1,7 @@
+const mongoose = require('mongoose');
+const {Types} = mongoose;
 const Note = require('../models/Note');
+
 
 const createNote = async (req, res) => {
   try {
@@ -11,7 +14,7 @@ const createNote = async (req, res) => {
       });
     }
 
-    const note = new Note({text, userId: user._id, createdDate: Date.now(),});
+    const note = new Note({text, userId: user._id});
 
     await note.save();
     await res.json({
@@ -27,13 +30,21 @@ const createNote = async (req, res) => {
 
 const getNote = async (req, res) => {
   try {
+
     const user = await req.user;
     const noteId = await req.params.id;
+    const condition = Types.ObjectId.isValid(noteId);
+    if (!condition) {
+      return await res.status(400).json({
+        message: `Invalid ID!`,
+      });
+    }
+
     const note = await Note.findOne({_id: noteId, userId: user._id});
 
     if (!note) {
       return await res.status(400).json({
-        message: 'note not found!',
+        message: `Note with this id not found!`,
       });
     }
 
@@ -82,12 +93,6 @@ const changeCurrentNote = async (req, res) => {
     const noteId = await req.params.id;
     const note = await Note.findOne({_id: noteId, userId: user._id});
     const newTextValue = req.body.text;
-
-    if (!note) {
-      return await res.status(400).json({
-        message: 'Note with this id not found!',
-      });
-    }
 
     if (!newTextValue) {
       return await res.status(400).json({

@@ -12,17 +12,12 @@ module.exports = async (req, res, next) => {
 
     if (!authorization) {
       return await res.status(400).json({
-        message: 'no authorization!',
-        data: {
-          auth: req.headers.authorization,
-          headers: req.headers,
-          req
-        }
+        message: 'no authorization!'
       });
     }
 
     const token = authorization.split(' ')[1];
-    const decoded = await jwt.decode(token, config.get('jwtSecret'));
+    const decoded = await jwt.verify(token, config.get('jwtSecret'));
 
     if (!decoded) {
       return await res.status(400).json({
@@ -45,11 +40,7 @@ module.exports = async (req, res, next) => {
     next();
   } catch (e) {
     await res.status(400).json({
-      message: `${e.message}`,
-      data: {
-        auth: req.headers.authorization,
-        headers: req.headers
-      }
+      message: `${e.message}`
     });
     // await res.status(400).json({
     //   message: 'error! no authorization!',
