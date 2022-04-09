@@ -7,17 +7,17 @@ import {NoteCard} from "../components/NoteCard";
 import {useMessage} from "../hooks/message.hook";
 
 export const DetailPage = () => {
-  const navigate = useNavigate();
   const {token} = useContext(AuthContext);
   const {request, loading} = useHttp();
   const [noteValue, setNoteValue] = useState(null);
   const noteId = useParams().id;
+  const navigate = useNavigate();
   const [updatedValue, setUpdatedValue] = useState('');
   const message = useMessage();
 
-  useEffect(() => {
-    window.M.updateTextFields()
-  }, []);
+  // useEffect(() => {
+  //   window.M.updateTextFields()
+  // }, []);
 
   const getNote = useCallback(async () => {
     try {
@@ -26,8 +26,9 @@ export const DetailPage = () => {
         Authorization: `Bearer ${token}`
       });
       setNoteValue(fetched.note);
+      console.log(noteValue)
     } catch (e) {
-
+      console.log(e.message)
     }
   }, [token, noteId, request]);
 

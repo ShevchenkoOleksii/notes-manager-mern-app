@@ -10,7 +10,8 @@ const authRouter = require('./routes/auth.router');
 const userRouter = require('./routes/user.router');
 const noteRouter = require('./routes/note.router');
 
-app.use(express.json());
+app.use(express.json({extended: true}))
+// app.use(express.json());
 app.use(morgan('tiny'));
 
 app.use('/api/auth', authRouter);
