@@ -9,14 +9,14 @@ module.exports = async (req, res, next) => {
 
   try {
     const token = req.headers.authorization.split(' ')[1];
-
+    console.log('token', token)
     if (!token) {
       return await res.status(400).json({
         message: 'no authorization!',
       });
     }
 
-    const decoded = await jwt.decode(token, config.get('jwtSecret'));
+    const decoded = await jwt.verify(token, config.get('jwtSecret'));
 
     if (!decoded) {
       return await res.status(400).json({
