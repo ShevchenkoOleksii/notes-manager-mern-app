@@ -26,7 +26,7 @@ export const DetailPage = () => {
         Authorization: `Bearer ${token}`
       });
       setNoteValue(fetched.note);
-      console.log(noteValue)
+      console.log(fetched.note)
     } catch (e) {
       console.log(e.message)
     }

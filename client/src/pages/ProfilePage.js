@@ -28,10 +28,15 @@ export const ProfilePage = () => {
         Authorization: `Bearer ${token}`,
       });
       setUserProfile(fetched.user);
+      console.log(fetched.user)
     } catch (e) {
-
+      console.log(e.message)
     }
   }, [token, request]);
+
+  useEffect(() => {
+    fetchedUser();
+  }, [fetchedUser]);
 
   const changePassword = async (event) => {
     event.preventDefault();
@@ -67,9 +72,7 @@ export const ProfilePage = () => {
     }
   }, [token, request]);
 
-  useEffect(() => {
-    fetchedUser();
-  }, [fetchedUser]);
+
 
   if (loading || !userProfile) {
     return <Loader/>

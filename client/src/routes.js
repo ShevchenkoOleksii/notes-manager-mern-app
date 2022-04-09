@@ -6,22 +6,21 @@ import {AuthPage} from "./pages/AuthPage";
 import {DetailPage} from "./pages/DetailPage";
 
 export const useRoutes = (isAuthenticated) => {
-  if (isAuthenticated) {
-    return (
-      <Routes>
-        <Route path={'/api/notes'} element={<NotesPage />} />
-        <Route path={'/api/users/me'} element={<ProfilePage />} />
-        <Route path={'/api/notes/:id'} element={<DetailPage />} />
-        <Route path={'*'} element={<ProfilePage />} />
-        {/*<Route path={'*'} element={<Navigate replace to="/api/notes" />} />*/}
-      </Routes>
-    )
-  }
+    if (isAuthenticated) {
+        return (
+            <Routes>
+                <Route path={'/api/notes'} element={<NotesPage/>}/>
+                <Route path={'/api/users/me'} element={<ProfilePage/>}/>
+                <Route path={'/api/notes/:id'} element={<DetailPage/>}/>
+                <Route path={'*'} element={<Navigate replace to="/api/notes" />} />
+            </Routes>
+        )
+    }
 
-  return (
-    <Routes>
-      <Route path={'/api/auth'} element={<AuthPage />} />
-      <Route path={'*'} element={<Navigate replace to="/api/auth" />} />
-    </Routes>
-  )
+    return (
+        <Routes>
+            <Route path={'/api/auth'} element={<AuthPage/>}/>
+            <Route path={'*'} element={<Navigate replace to="/api/auth"/>}/>
+        </Routes>
+    )
 };
