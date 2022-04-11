@@ -10,6 +10,8 @@ const mongoUri = config.get('mongoUri');
 const authRouter = require('./routes/auth.router');
 const userRouter = require('./routes/user.router');
 const noteRouter = require('./routes/note.router');
+const friendRouter = require('./routes/friend.router');
+const messageRouter = require('./routes/message.router');
 
 // app.use(cors());
 // app.use(express.json({extended: true}))
@@ -19,7 +21,8 @@ app.use(morgan('tiny'));
 app.use('/api/auth', authRouter);
 app.use('/api/users/me', userRouter);
 app.use('/api/notes', noteRouter);
-
+app.use('/api/friends', friendRouter);
+app.use('/api/messages', messageRouter);
 app.use('/', express.static(path.join(__dirname, "/client/build")));
 
 app.get('*', (req, res) => {

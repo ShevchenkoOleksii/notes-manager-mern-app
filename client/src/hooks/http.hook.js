@@ -1,8 +1,12 @@
 import {useState, useCallback} from "react"
+import {useAuth} from "./auth.hook";
+import {useNavigate} from "react-router-dom";
 
 export const useHttp = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const {logout} = useAuth();
 
   const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
     setLoading(true);
@@ -19,6 +23,10 @@ export const useHttp = () => {
       });
 
       const data = await response.json();
+
+      if (data.message === 'jwt expired') {
+        logout();
+      }
 
       if (!response.ok) {
         throw new Error(data.message || `Something went wrong... :(`);

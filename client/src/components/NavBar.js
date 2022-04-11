@@ -44,6 +44,9 @@ const NavBar = () => {
           </a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><NavLink to={'/api/users/me'}>Profile</NavLink></li>
+            <li><NavLink to={'/api/users/me/all'}>Users</NavLink></li>
+            <li><NavLink to={'/api/friends'}>Friends</NavLink></li>
+            <li><NavLink to={'/api/messages'}>Messages</NavLink></li>
             <li><NavLink to={'/api/notes'}>Notes</NavLink></li>
             {/*<li><NavLink to={'/api/notes/:id'}>Detail</NavLink></li>*/}
             <li><a

@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const {Types} = require('mongoose');
 
 const getUserProfile = async (req, res) => {
   try {
@@ -62,8 +63,26 @@ const removeUser = async (req, res) => {
   }
 };
 
+const getAllUsers = async (req, res) => {
+  try {
+    const user = await req.user;
+    const allUsers1 = await User.find({});
+    const allUsers = allUsers1.filter(item => !item._id.equals(user._id));
+
+    await res.json({
+      allUsers,
+      message: `Success!`,
+    });
+  } catch (e) {
+    return await res.status(500).json({
+      message: `${e.message}`,
+    });
+  }
+};
+
 module.exports = {
   getUserProfile,
   changeUserPassword,
   removeUser,
+  getAllUsers
 };
