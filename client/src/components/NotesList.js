@@ -3,6 +3,7 @@ import {useHttp} from "../hooks/http.hook";
 import {AuthContext} from "../context/AuthContext";
 import {Loader} from "./Loader";
 import {Link} from "react-router-dom";
+import {useMessage} from "../hooks/message.hook";
 
 export const NotesList = () => {
   const [notes, setNotes] = useState([]);
@@ -10,6 +11,7 @@ export const NotesList = () => {
   const [limit, setLimit] = useState('');
   const {loading, request} = useHttp();
   const {token} = useContext(AuthContext);
+  const message = useMessage();
 
   const fetchedNotes = useCallback(async () => {
     try {
@@ -18,7 +20,7 @@ export const NotesList = () => {
       });
       setNotes(fetched.notes);
     } catch (e) {
-
+      message(e.message, 'message_error');
     }
   }, [token, request]);
 
@@ -31,7 +33,7 @@ export const NotesList = () => {
       setOffset('');
       setLimit('');
     } catch (e) {
-
+      message(e.message, 'message_error');
     }
   };
 

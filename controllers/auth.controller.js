@@ -10,7 +10,7 @@ const login = async (req, res) => {
 
     if (!errors.isEmpty()) {
       return await res.status(400).json({
-        message: `login data is invalid`,
+        message: `Login data is invalid`,
       });
     }
 
@@ -20,7 +20,7 @@ const login = async (req, res) => {
 
     if (!user) {
       return res.status(400).json({
-        message: 'user not found',
+        message: 'User not found',
       });
     }
 
@@ -28,7 +28,7 @@ const login = async (req, res) => {
 
     if (!checkPassword) {
       return res.status(400).json({
-        message: 'invalid password, try again',
+        message: 'Invalid password, try again',
       });
     }
 

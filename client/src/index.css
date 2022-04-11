@@ -32,3 +32,23 @@ input.yellow-input:-webkit-autofill,
 input.yellow-input:-webkit-autofill:focus {
   transition: background-color 600000s 0s;
 }
+
+.message_info {
+  background-color: forestgreen;
+}
+
+.message_error {
+  background-color: #b30707;
+}
+
+.message_warning {
+  background-color: #ff6600;
+}
+
+.get_message {
+  background-color: rgba(94, 128, 255, 0.2);
+}
+
+.send_message {
+  background-color: rgba(175, 94, 255, 0.2);
+}

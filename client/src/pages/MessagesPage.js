@@ -12,10 +12,13 @@ const MessagesPage = () => {
     const cardClasses = {
         gettingMessages: 'col s7 left-align',
         sendingMessages: 'col s7 offset-s4 right-align',
+        getting: 'card get_message',
+        sending: 'card send_message'
     };
+
     const messageStyles = {
         gettingMessages: {color: 'green'},
-        sendingMessages: {color: 'orange'},
+        sendingMessages: {color: 'blue'},
     }
 
     const fetchedMessages = useCallback(async () => {
@@ -27,7 +30,7 @@ const MessagesPage = () => {
             setUser(fetched.user);
             setMessages(sortMessages(fetched.messages));
         } catch (e) {
-            message(e.message);
+            message(e.message, 'message_error');
         }
     }, [token, request]);
 
@@ -47,31 +50,36 @@ const MessagesPage = () => {
     }, [fetchedMessages]);
     return (
         <div className="row">
-                {messages.map((message, index) => {
-                    return (
-                        <div className={user.username === message.toUserName ? cardClasses.gettingMessages : cardClasses.sendingMessages} key={message._id}>
+            {messages.map((message, index) => {
+                return (
+                    <div
+                        className={user.username === message.toUserName ? cardClasses.gettingMessages : cardClasses.sendingMessages}
+                        key={message._id}>
 
-                            <div className="card">
-                                {/*<div className="card-image">*/}
-                                {/*    */}
-                                {/*</div>*/}
-                                <div className="card-stacked">
-                                    <div className="card-content">
-                                        {user.username === message.toUserName
-                                            ? <h5 style={messageStyles.gettingMessages}>{message.fromUserName}</h5>
-                                            : <h5 style={messageStyles.sendingMessages}>Me</h5>
-                                        }
-                                        <p style={{fontSize: '20px'}}>{message.messageText}</p>
-                                        <p style={{fontSize: '14px'}}>{new Date(message.createdDate).toLocaleTimeString()}</p>
-                                    </div>
-                                    {/*<div className="card-action">*/}
-                                    {/*    <a href="/">This is a link</a>*/}
-                                    {/*</div>*/}
+                        <div
+                            className={user.username === message.toUserName ? cardClasses.getting : cardClasses.sending}>
+                            {/*<div className="card-image">*/}
+                            {/*    */}
+                            {/*</div>*/}
+                            <div className="card-stacked">
+                                <div className="card-content">
+                                    {user.username === message.toUserName
+                                        ? <h5 style={messageStyles.gettingMessages}>{message.fromUserName}</h5>
+                                        : <h5 style={messageStyles.sendingMessages}>Me <small>(to {message.toUserName})</small></h5>
+                                    }
+                                    <p style={{fontSize: '22px', backgroundColor: 'rgba(55,96,255,0.1)', borderRadius: '5px', padding: '5px'}}>{message.messageText}</p>
+                                    <p style={{fontSize: '12px'}}>
+                                        {new Date(message.createdDate).toLocaleTimeString()} <strong>{new Date(message.createdDate).toLocaleDateString()}</strong>
+                                    </p>
                                 </div>
+                                {/*<div className="card-action">*/}
+                                {/*    <a href="/">This is a link</a>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
-                    )
-                })}
+                    </div>
+                )
+            })}
         </div>
     );
 };

@@ -12,7 +12,6 @@ const FriendsDetailPage = () => {
     const message = useMessage();
     const friendId = useParams().id;
 
-    //???
     const updateNotes = useCallback(async () => {
         try {
             const fetched = await request(`/api/friends/update/${friendId}`, 'PATCH', null, {
@@ -20,7 +19,7 @@ const FriendsDetailPage = () => {
             });
             message(fetched.message);
         } catch (e) {
-            message(e.message);
+            message(e.message, 'message_error');
         }
     }, [token, request]);
 
@@ -31,7 +30,7 @@ const FriendsDetailPage = () => {
             });
             setFriend(fetched.friend);
         } catch (e) {
-            message(e.message);
+            message(e.message, 'message_error');
         }
     }, [token, request]);
 

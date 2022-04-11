@@ -46,25 +46,25 @@ export const NoteCard = ({noteValue, removeNote, editNote, updateNote, startEdit
             <div className="card-action">
               <button
                 style={{marginRight: 5}}
-                className="btn red darken-2"
+                className="btn red darken-2 waves-effect waves-purple"
                 onClick={removeNote}
               >Delete
               </button>
               <button
                 style={{marginRight: 5}}
-                className="btn blue darken-2"
+                className="btn blue darken-2 waves-effect waves-purple"
                 onClick={editNote}
               >Change
               </button>
               <button
                 style={{marginRight: 5}}
-                className="btn green darken-2"
+                className="btn green darken-2 waves-effect waves-purple"
                 onClick={updateNote}
               >Update
               </button>
               <button
                 style={{marginRight: 5}}
-                className="btn orange darken-4"
+                className="btn orange darken-4 waves-effect waves-purple"
                 onClick={startEditNote}
               >Edit
               </button>

@@ -27,7 +27,7 @@ export const NotesPage = () => {
       navigate(`/api/notes/${data.note._id}`);
 
     } catch (e) {
-      message(e.message);
+      message(e.message, 'message_error');
     }
   };
 

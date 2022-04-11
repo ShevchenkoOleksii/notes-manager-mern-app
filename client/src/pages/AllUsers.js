@@ -16,7 +16,7 @@ const AllUsers = () => {
             });
             setUsers(fetched.allUsers);
         } catch (e) {
-            message(e.message);
+            message(e.message, 'message_error');
         }
     }, [token, request]);
 
@@ -25,6 +25,17 @@ const AllUsers = () => {
     }, [fetchedUsers]);
 
     return (
+        // <div className="row">
+        //     <div className="col s6">
+        //         <div className="collection">
+        //             {users.map((user, index) => {
+        //                 return (<a href="/" className="collection-item">{user.username}</a>)
+        //             })
+        //             }
+        //         </div>
+        //     </div>
+        // </div>
+
         <div className="row">
             <div className="col">
                 {users.map((user, index) => {

@@ -13,7 +13,7 @@ export const AuthPage = () => {
   });
 
   useEffect(() => {
-    message(error);
+    message(error, 'message_error');
     clearError();
   }, [error, message, clearError]);
 
@@ -73,12 +73,12 @@ export const AuthPage = () => {
             </div>
           </div>
           <div className="card-action">
-            <button className="btn yellow darken-4"
+            <button className="btn yellow darken-4 waves-effect waves-purple"
                     style={{marginRight: 10}}
                     onClick={loginHandler}
                     disabled={loading}
             >Log In</button>
-            <button className="btn blue darken-2"
+            <button className="btn blue darken-2 waves-effect waves-purple"
                     onClick={registerHandler}
                     disabled={loading}
             >Sing In</button>

@@ -29,7 +29,7 @@ const FriendCard = ({friend, cb}) => {
             // navigate(`/api/notes`);
             message(fetched.message);
         } catch (e) {
-            message(e.message);
+            message(e.message, 'message_error');
         }
     };
 
@@ -43,7 +43,7 @@ const FriendCard = ({friend, cb}) => {
             // navigate(`/api/notes`);
             message(fetched.message);
         } catch (e) {
-            message(e.message);
+            message(e.message, 'message_error');
         }
     };
 
@@ -57,7 +57,7 @@ const FriendCard = ({friend, cb}) => {
             cb();
             message(fetched.message);
         } catch (e) {
-            message(e.message);
+            message(e.message, 'message_error');
         }
     };
 
@@ -86,7 +86,7 @@ const FriendCard = ({friend, cb}) => {
             setMessageText('');
             // navigate(`/api/notes/${data.note._id}`);
         } catch (e) {
-            message(`${e.message}`);
+            message(`${e.message}`, 'message_error');
         }
     };
 
@@ -144,15 +144,18 @@ const FriendCard = ({friend, cb}) => {
                 <a href="/" onClick={sendMessage} title="Send">
                     <i className="material-icons" style={{color: "blue"}}>send</i>
                 </a>
-                <div className="input-field col s6">
-                    <input id="message"
+                <div className="input-field col s12">
+                    <input id={friend._id}
                            type="text"
                            className="validate"
                            value={messageText}
                            onChange={changeHandler}
                     />
-                        <label htmlFor="message">Message</label>
+                        <label htmlFor={friend._id}>Message</label>
                 </div>
+                <a href="/" className="btn blue waves-effect waves-purple" onClick={sendMessage} title="Send">
+                    Send
+                </a>
             </div>
         </div>
     );

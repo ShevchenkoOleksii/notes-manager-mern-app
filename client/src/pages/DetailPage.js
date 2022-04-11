@@ -27,7 +27,7 @@ export const DetailPage = () => {
       });
       setNoteValue(fetched.note);
     } catch (e) {
-      message(e.message);
+      message(e.message, 'message_error');
       setWarning(e.message);
       setNoteValue(null);
     }
@@ -45,7 +45,7 @@ export const DetailPage = () => {
       navigate(`/api/notes`);
       message(fetched.message);
     } catch (e) {
-      message(e.message);
+      message(e.message, 'message_error');
     }
   }, [token, noteId, request]);
 
@@ -59,7 +59,7 @@ export const DetailPage = () => {
       // navigate(`/api/notes`);
       message(fetched.message);
     } catch (e) {
-      message(e.message);
+      message(e.message, 'message_error');
     }
   };
 
@@ -85,7 +85,7 @@ export const DetailPage = () => {
       // navigate(`/api/notes`);
       message(fetched.message);
     } catch (e) {
-      message(e.message);
+      message(e.message, 'message_error');
     }
   };
 

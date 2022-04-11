@@ -17,7 +17,7 @@ const FriendsPage = () => {
             });
             setFriends(fetched.friends);
         } catch (e) {
-            message(e.message);
+            message(e.message, 'message_error');
         }
     }, [token, request]);
 

@@ -29,7 +29,7 @@ export const ProfilePage = () => {
       });
       setUserProfile(fetched.user);
     } catch (e) {
-      message(e.message);
+      message(e.message, 'message_error');
     }
   }, [token, request]);
 
@@ -53,7 +53,7 @@ export const ProfilePage = () => {
     } catch (e) {
       setOldPassword('');
       setNewPassword('');
-      message(e.message);
+      message(e.message, 'message_error');
     }
   };
 
@@ -67,7 +67,7 @@ export const ProfilePage = () => {
       navigate("api/auth", {replace: true});
       message(fetched.message);
     } catch (e) {
-      message(e.message);
+      message(e.message, 'message_error');
     }
   }, [token, request]);
 
@@ -111,7 +111,7 @@ export const ProfilePage = () => {
                     <span>Are you sure you want to delete your account?</span>
                   </label>
                 </p>
-                <button className="btn red darken-1"
+                <button className="btn red darken-1 waves-effect waves-purple"
                         onClick={deleteAccount}
                         disabled={!readyToDelete}
                 >Delete Account!
@@ -145,7 +145,7 @@ export const ProfilePage = () => {
               <div className="card-action">
                 <a href="/"
                    onClick={changePassword}
-                   className="btn orange darken-1"
+                   className="btn orange darken-1 waves-effect waves-purple"
                 >Change Password</a>
               </div>
             </div>

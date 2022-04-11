@@ -35,7 +35,7 @@ const UserCard = ({user}) => {
             // navigate(`/api/notes/${data.note._id}`);
 
         } catch (e) {
-            message(e.message);
+            message(e.message, 'message_error');
         }
     };
 
@@ -62,7 +62,7 @@ const UserCard = ({user}) => {
             </div>
 
             <div className="card-action">
-                <button className="btn blue"
+                <button className="btn blue waves-effect waves-purple"
                         onClick={addFriend}>
                     Add Friend
                 </button>
