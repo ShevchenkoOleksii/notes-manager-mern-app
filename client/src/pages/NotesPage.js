@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useCallback, useContext, useEffect, useState} from "react";
 import {useHttp} from "../hooks/http.hook";
 import {AuthContext} from "../context/AuthContext";
 import {useNavigate} from "react-router-dom";
@@ -11,6 +11,25 @@ export const NotesPage = () => {
   const {request} = useHttp();
   const [noteValue, setNoteValue] = useState('');
   const message = useMessage();
+  //------------------------------------------------------------------
+  const {token} = useContext(AuthContext);
+  const [notes, setNotes] = useState([]);
+
+  const fetchedNotes = useCallback(async () => {
+    try {
+      const fetched = await request('/api/notes', 'GET', null, {
+        Authorization: `Bearer ${token}`,
+      });
+      setNotes(fetched.notes);
+    } catch (e) {
+      message(e.message, 'message_error');
+    }
+  }, [token, request]);
+
+  useEffect(() => {
+    fetchedNotes();
+  }, [fetchedNotes]);
+  //------------------------------------------------------------------
 
   useEffect(() => {
     window.M.updateTextFields()
