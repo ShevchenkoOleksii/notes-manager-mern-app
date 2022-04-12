@@ -10,20 +10,20 @@ const NavBar = () => {
   const {request} = useHttp();
   const {token} = useContext(AuthContext);
 
-  const fetchedUser = useCallback(async () => {
-    try {
-      const fetched = await request('/api/users/me', 'GET', null, {
-        Authorization: `Bearer ${token}`,
-      });
-      setUserProfile(fetched.user);
-    } catch (e) {
-      console.log(e.message)
-    }
-  }, [token, request]);
+  // const fetchedUser = useCallback(async () => {
+  //   try {
+  //     const fetched = await request('/api/users/me', 'GET', null, {
+  //       Authorization: `Bearer ${token}`,
+  //     });
+  //     setUserProfile(fetched.user);
+  //   } catch (e) {
+  //     console.log(e.message)
+  //   }
+  // }, [token, request]);
 
-  useEffect(() => {
-    fetchedUser();
-  }, [fetchedUser]);
+  // useEffect(() => {
+  //   fetchedUser();
+  // }, [fetchedUser]);
 
   const logoutHandler = (event) => {
     event.preventDefault();
