@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 
     if (!authorization) {
       return await res.status(400).json({
-        message: 'no authorization!'
+        message: 'no authorization. (auth.middleware)!'
       });
     }
 
@@ -40,7 +40,7 @@ module.exports = async (req, res, next) => {
     next();
   } catch (e) {
     await res.status(400).json({
-      message: `${e.message}`
+      message: `43 auth: ${e.message}`
     });
     // await res.status(400).json({
     //   message: 'error! no authorization!',

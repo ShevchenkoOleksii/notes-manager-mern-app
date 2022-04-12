@@ -11,9 +11,9 @@ const {
   removeNote,
 } = require('../controllers/note.controller');
 
-router.post('/', auth, createNote);
 router.get('/', auth, getNotes);
 router.get('/:id', auth, getNote);
+router.post('/', auth, createNote);
 router.put('/:id', auth, changeCurrentNote);
 router.patch('/:id', auth, changeNoteCompleted);
 router.delete('/:id', auth, removeNote);
