@@ -2,13 +2,14 @@ import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
 import {useHttp} from "../hooks/http.hook";
+import {Loader} from './Loader';
 
 const NavBar = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   const [userProfile, setUserProfile] = useState('');
-  const {request} = useHttp();
-  const {token} = useContext(AuthContext);
+  const {request, loading} = useHttp();
+  const {token, ready} = useContext(AuthContext);
 
   const fetchedUser = useCallback(async () => {
     try {
@@ -33,6 +34,10 @@ const NavBar = () => {
 
   const goHome = (event) => {
     event.preventDefault();
+  }
+
+  if (loading || !ready) {
+    return <Loader />;
   }
 
   return (

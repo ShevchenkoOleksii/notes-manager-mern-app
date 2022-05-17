@@ -10,10 +10,11 @@ module.exports = async (req, res, next) => {
   try {
     // const authorization = req.headers.authorization;
     const {authorization} = req.headers;
-
+    console.log(req.headers);
     if (!authorization) {
       return await res.status(400).json({
-        message: 'no authorization. (auth.middleware)!'
+        // message: 'no authorization. (auth.middleware)!'
+        message: req.headers
       });
     }
 
