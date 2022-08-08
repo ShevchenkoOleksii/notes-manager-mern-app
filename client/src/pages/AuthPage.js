@@ -2,8 +2,10 @@ import React, {useContext, useEffect, useState} from "react";
 import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
 import {AuthContext} from "../context/AuthContext";
+import { Helmet } from 'react-helmet';
 
 export const AuthPage = () => {
+  const imageUrl = 'https://res.cloudinary.com/doghotelua/image/upload/v1581456521/blog/108_nft7ng.jpg';
   const auth = useContext(AuthContext);
   const message = useMessage();
   const {request, loading, error, clearError} = useHttp();
@@ -43,8 +45,35 @@ export const AuthPage = () => {
     } catch (e) {}
   };
 
+  const openPopup = (link, e) => {
+    e.preventDefault();
+    window.open(link, 'newwindow', 'width=300, height=250');
+  };
+  const { href } = window.location;
+  const FB_DOMAIN = 'https://facebook.com/sharer.php?u=';
+  const ShareFacebookButton = () => (
+    <>
+      <Helmet>
+        <meta property="og:url" content={href} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={'noteValue'} />
+        <meta property="og:image" content={imageUrl} />
+      </Helmet>
+      <a
+        href={`${FB_DOMAIN}${href}`}
+        onClick={e => openPopup(`${FB_DOMAIN}${href}`, e)}
+      >
+        Share!
+      </a>
+    </>
+  );
+
   return (
     <div className="row">
+      <ShareFacebookButton />
+      <div className="col s6 offset-s3">
+        <img src={imageUrl} style={{height: '200px'}} alt='alt-text'></img>
+      </div>
       <div className="col s6 offset-s3">
         <div className="card purple darken-1">
           <div className="card-content white-text">
