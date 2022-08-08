@@ -1,5 +1,6 @@
 import React, {useCallback, useContext, useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
+import { Helmet } from 'react-helmet';
 import {useHttp} from "../hooks/http.hook";
 import {AuthContext} from "../context/AuthContext";
 import {Loader} from "../components/Loader";
@@ -15,6 +16,7 @@ export const DetailPage = () => {
   const [updatedValue, setUpdatedValue] = useState('');
   const message = useMessage();
   const [warning, setWarning] = useState('');
+  const imageUrl = 'https://res.cloudinary.com/doghotelua/image/upload/v1581456521/blog/108_nft7ng.jpg';
 
   useEffect(() => {
     window.M.updateTextFields()
@@ -89,14 +91,35 @@ export const DetailPage = () => {
     }
   };
 
-
-
+  const openPopup = (link, e) => {
+    e.preventDefault();
+    window.open(link, 'newwindow', 'width=300, height=250');
+  };
+  const { href } = window.location;
+  const FB_DOMAIN = 'https://facebook.com/sharer.php?u=';
+  const ShareFacebookButton = () => (
+    <>
+      <Helmet>
+        <meta property="og:url" content={href} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={noteValue} />
+        <meta property="og:image" content={imageUrl} />
+      </Helmet>
+      <a
+        href={`${FB_DOMAIN}${href}`}
+        onClick={e => openPopup(`${FB_DOMAIN}${href}`, e)}
+      >
+        Share!
+      </a>
+    </>
+  );
   // if (loading) {
   //   return <Loader/>
   // }
 
   return (
       <div className="row">
+      <ShareFacebookButton />
         {/*{!noteValue && navigate(`/api/notes`)}*/}
         {!noteValue &&
             <div className="row">
@@ -127,6 +150,9 @@ export const DetailPage = () => {
                  onChange={(e) => setUpdatedValue(e.target.value)}
                  className="validate"/>
           <label htmlFor="updatedValue">New Value</label>
+        </div>
+        <div className="input-field col s6 offset-s3">
+          <img src={imageUrl} style={{height: '200px'}} alt='alt-text'></img>
         </div>
       </div>
   )
