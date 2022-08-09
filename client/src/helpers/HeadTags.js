@@ -1,6 +1,6 @@
 import Helmet from "react-helmet";
 
-const HeadTags = (props) => {
+export const HeadTags = (props) => {
   const {
     title = "Portfolio - your name",
     metaDescription = "default description",

@@ -4,7 +4,7 @@ import {useMessage} from "../hooks/message.hook";
 import {AuthContext} from "../context/AuthContext";
 import { Helmet } from 'react-helmet';
 import {FacebookShareButton, FacebookIcon} from "react-share";
-import HeadTags from '../helpers/HeadTags';
+import {HeadTags} from '../helpers/HeadTags';
 
 export const AuthPage = () => {
   const imageUrl = 'https://res.cloudinary.com/doghotelua/image/upload/v1581456521/blog/108_nft7ng.jpg';
