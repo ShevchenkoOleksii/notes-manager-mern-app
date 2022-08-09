@@ -53,22 +53,22 @@ export const AuthPage = () => {
   };
   const { href } = window.location;
   const FB_DOMAIN = 'https://facebook.com/sharer.php?u=';
-  const ShareFacebookButton = () => (
-    <>
-      <Helmet>
-        <meta property="og:url" content={href} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={'noteValue'} />
-        <meta property="og:image" content={imageUrl} />
-      </Helmet>
-      <a
-        href={`${FB_DOMAIN}${href}`}
-        onClick={e => openPopup(`${FB_DOMAIN}${href}`, e)}
-      >
-        Share!
-      </a>
-    </>
-  );
+  // const ShareFacebookButton = () => (
+  //   <>
+  //     <Helmet>
+  //       <meta property="og:url" content={href} />
+  //       <meta property="og:type" content="website" />
+  //       <meta property="og:title" content={'noteValue'} />
+  //       <meta property="og:image" content={imageUrl} />
+  //     </Helmet>
+  //     <a
+  //       href={`${FB_DOMAIN}${href}`}
+  //       onClick={e => openPopup(`${FB_DOMAIN}${href}`, e)}
+  //     >
+  //       Share!
+  //     </a>
+  //   </>
+  // );
 
   return (
     <div className="row">
@@ -76,7 +76,7 @@ export const AuthPage = () => {
             title={'some title'}
             metaDescription={'metaDescription'}
           ></HeadTags>
-      <ShareFacebookButton />
+      {/* <ShareFacebookButton /> */}
       
       <FacebookShareButton 
                 url={href}
