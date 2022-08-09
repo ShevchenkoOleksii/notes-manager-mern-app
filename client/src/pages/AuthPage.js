@@ -3,6 +3,7 @@ import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
 import {AuthContext} from "../context/AuthContext";
 import { Helmet } from 'react-helmet';
+import {FacebookShareButton, FacebookIcon} from "react-share";
 
 export const AuthPage = () => {
   const imageUrl = 'https://res.cloudinary.com/doghotelua/image/upload/v1581456521/blog/108_nft7ng.jpg';
@@ -71,6 +72,12 @@ export const AuthPage = () => {
   return (
     <div className="row">
       <ShareFacebookButton />
+      <FacebookShareButton 
+                url={href}
+                quote={"CampersTribe - World is yours to explore"}
+                hashtag="#camperstribe">
+                <FacebookIcon size={36} />
+      </FacebookShareButton>
       <div className="col s6 offset-s3">
         <img src={imageUrl} style={{height: '200px'}} alt='alt-text'></img>
       </div>
