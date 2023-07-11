@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const config = require('config');
+// const config = require('config');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');

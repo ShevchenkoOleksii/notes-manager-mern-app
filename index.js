@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 // const config = require('config');
 const morgan = require('morgan');
 const path = require('path');
