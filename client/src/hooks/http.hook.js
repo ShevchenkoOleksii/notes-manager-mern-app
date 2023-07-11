@@ -16,6 +16,8 @@ export const useHttp = () => {
         headers['Content-Type'] = 'application/json';
       }
 
+      console.log('url', url);
+
       const response = await fetch(url, {
         method,
         body,
