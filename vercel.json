@@ -2,8 +2,8 @@
   "version": 2,
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/client/build/static/$1"
+      "src": "/client/build",
+      "dest": "index.html"
     },
     {
       "src": "/(.*)",
