@@ -25,7 +25,7 @@ export const useHttp = () => {
       });
 
       const data = await response.json();
-
+      console.log('data', data);
       if (data.message === 'jwt expired') {
         logout();
       }
