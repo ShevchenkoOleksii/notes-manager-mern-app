@@ -1,5 +1,5 @@
 {
   "port": 8080,
   "jwtSecret": "some secret word",
-  "mongoUri": "mongodb+srv://Oleksii:3x3QgnFz4MwLZrav@cluster0.pm63i.mongodb.net/labHWDatabase?retryWrites=true&w=majority"
+  "mongoUri": "mongodb+srv://shevchenkoaleksey9:pygvEm4S4IXc4k5m@cluster0.joyxmmb.mongodb.net/?retryWrites=true&w=majority"
 }
