@@ -17,7 +17,8 @@ export const useHttp = () => {
       }
 
       console.log('url', url);
-
+      console.log('body', body);
+      console.log('headers', headers);
       const response = await fetch(url, {
         method,
         body,
@@ -40,7 +41,8 @@ export const useHttp = () => {
     } catch (e) {
       setLoading(false);
       setError(e.message);
-      throw e;
+      console.log(e.message);
+      // throw e;
     }
   }, []);
 
