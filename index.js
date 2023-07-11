@@ -1,11 +1,12 @@
 const express = require('express');
-const config = require('config');
+// const config = require('config');
 const morgan = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 // const PORT = process.env.PORT || config.get('port') || 8080;
-const mongoUri = config.get('mongoUri');
+// const mongoUri = config.get('mongoUri');
+const mongoUri = process.env.mongoUri;
 const authRouter = require('./routes/auth.router');
 const userRouter = require('./routes/user.router');
 const noteRouter = require('./routes/note.router');

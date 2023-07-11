@@ -19,7 +19,8 @@ module.exports = async (req, res, next) => {
     }
 
     const token = authorization.split(' ')[1];
-    const decoded = await jwt.verify(token, config.get('jwtSecret'));
+    // const decoded = await jwt.verify(token, config.get('jwtSecret'));
+    const decoded = await jwt.verify(token, process.env.jwtSecret);
 
     if (!decoded) {
       return await res.status(400).json({
