@@ -16,10 +16,7 @@ export const useHttp = () => {
         headers['Content-Type'] = 'application/json';
       }
 
-      console.log('url', url);
-      console.log('body', body);
-      console.log('headers', headers);
-      const response = await fetch(url, {
+      const response = await fetch(`${process.env.REACT_APP_API}${url}`, {
         method,
         body,
         headers
