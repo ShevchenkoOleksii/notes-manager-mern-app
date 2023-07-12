@@ -27,7 +27,7 @@ app.use('/api/friends', friendRouter);
 app.use('/api/messages', messageRouter);
 
 app.get("/", (req, res) => {
-  res.send(<h1>Hello!</h1>);
+  res.send('Hello!');
 });
 // app.use('/', express.static(path.join(__dirname, "/client/build")));
 //
