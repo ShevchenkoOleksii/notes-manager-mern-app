@@ -16,10 +16,7 @@ const messageRouter = require('./routes/message.router');
 
 const app = express();
 
-// app.use(cors());
-app.use(cors({
-  origin: ["https://notes-manager-mern-app-backend.vercel.app", "http://localhost:3000/"],
-}));
+app.use(cors());
 app.use(express.json({extended: true}))
 app.use(morgan('tiny'));
 
@@ -28,11 +25,11 @@ app.use('/api/users/me', userRouter);
 app.use('/api/notes', noteRouter);
 app.use('/api/friends', friendRouter);
 app.use('/api/messages', messageRouter);
-app.use('/', express.static(path.join(__dirname, "/client/build")));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
-});
+// app.use('/', express.static(path.join(__dirname, "/client/build")));
+//
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+// });
 
 const PORT = process.env.PORT || 8080;
 

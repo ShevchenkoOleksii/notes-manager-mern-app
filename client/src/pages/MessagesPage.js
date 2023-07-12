@@ -30,6 +30,7 @@ const MessagesPage = () => {
             setUser(fetched.user);
             setMessages(sortMessages(fetched.messages));
         } catch (e) {
+            console.log(e);
             message(e.message, 'message_error');
         }
     }, [token, request]);
