@@ -25,6 +25,10 @@ app.use('/api/users/me', userRouter);
 app.use('/api/notes', noteRouter);
 app.use('/api/friends', friendRouter);
 app.use('/api/messages', messageRouter);
+
+app.get("/", (req, res) => {
+  res.send(<h1>Hello!</h1>);
+});
 // app.use('/', express.static(path.join(__dirname, "/client/build")));
 //
 // app.get('*', (req, res) => {
