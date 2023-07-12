@@ -16,7 +16,10 @@ const messageRouter = require('./routes/message.router');
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: ["https://notes-manager-mern-app-backend.vercel.app", "http://localhost:3000/"],
+}));
 app.use(express.json({extended: true}))
 app.use(morgan('tiny'));
 
